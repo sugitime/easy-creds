@@ -219,14 +219,14 @@ if [ ! -e /usr/bin/radiusd ] && [ ! -e /usr/sbin/radiusd ] && [ ! -e /usr/local/
 	update=1
 	echo -e "\e[1;33m[-]\e[0m free-radius is not installed, will attempt to install..."
 	sleep 2
-	echo -e "\n\e[1;33m[*]\e[0m Downloading freeradius server 2.1.12 and the wpe patch..."
-	wget ftp://ftp.freeradius.org/pub/radius/old/freeradius-server-2.1.12.tar.bz2 -O /tmp/ec-install/freeradius-server-2.1.12.tar.bz2
-	wget https://github.com/sugitime/easy-creds/blob/master/freeradius-wpe.patch -O /tmp/ec-install/freeradius-wpe-2.1.12.patch
+	echo -e "\n\e[1;33m[*]\e[0m Downloading freeradius server 2.1.11 and the wpe patch..."
+	wget ftp://ftp.freeradius.org/pub/radius/old/freeradius-server-2.1.11.tar.bz2 -O /tmp/ec-install/freeradius-server-2.1.11.tar.bz2
+	wget https://github.com/sugitime/easy-creds/blob/master/freeradius-wpe.patch -O /tmp/ec-install/freeradius-wpe-2.1.11.patch
 	cd /tmp/ec-install
-	tar jxvf freeradius-server-2.1.12.tar.bz2 &> /dev/null
-	mv freeradius-wpe-2.1.12.patch /tmp/ec-install/freeradius-server-2.1.12/freeradius-wpe-2.1.12.patch
-	cd freeradius-server-2.1.12
-	patch -p1 < freeradius-wpe-2.1.12.patch &> /dev/null
+	tar jxvf freeradius-server-2.1.11.tar.bz2 &> /dev/null
+	mv freeradius-wpe-2.1.11.patch /tmp/ec-install/freeradius-server-2.1.11/freeradius-wpe-2.1.11.patch
+	cd freeradius-server-2.1.11
+	patch -p1 < freeradius-wpe-2.1.11.patch &> /dev/null
 	echo -e "\n\e[1;33m[*]\e[0m Installing the patched freeradius server..."
 	sleep 3
 	./configure && make && make install &> /dev/null
