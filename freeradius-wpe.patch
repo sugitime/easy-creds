@@ -1,6 +1,6 @@
-diff -uNr freeradius-server-2.1.12/raddb/radiusd.conf.in freeradius-server-2.1.12-wpe/raddb/radiusd.conf.in
---- freeradius-server-2.1.12/raddb/radiusd.conf.in	2011-09-30 10:12:07.000000000 -0400
-+++ freeradius-server-2.1.12-wpe/raddb/radiusd.conf.in	2012-08-15 10:34:20.369565898 -0400
+diff -uNr freeradius-server-2.1.11-orig//raddb/radiusd.conf.in freeradius-server-2.1.11-wpe//raddb/radiusd.conf.in
+--- freeradius-server-2.1.11-orig//raddb/radiusd.conf.in	2011-06-20 07:57:14.000000000 -0700
++++ freeradius-server-2.1.11-wpe//raddb/radiusd.conf.in	2011-09-28 08:11:09.334011116 -0700
 @@ -466,6 +466,7 @@
  
  #  The program to execute to do concurrency checks.
@@ -9,19 +9,19 @@ diff -uNr freeradius-server-2.1.12/raddb/radiusd.conf.in freeradius-server-2.1.1
  
  # SECURITY CONFIGURATION
  #
-diff -uNr freeradius-server-2.1.12/raddb/users freeradius-server-2.1.12-wpe/raddb/users
---- freeradius-server-2.1.12/raddb/users	2011-09-30 10:12:07.000000000 -0400
-+++ freeradius-server-2.1.12-wpe/raddb/users	2012-08-15 10:34:20.369565898 -0400
+diff -uNr freeradius-server-2.1.11-orig//raddb/users freeradius-server-2.1.11-wpe//raddb/users
+--- freeradius-server-2.1.11-orig//raddb/users	2011-06-20 07:57:14.000000000 -0700
++++ freeradius-server-2.1.11-wpe//raddb/users	2011-09-28 10:32:14.650011032 -0700
 @@ -201,3 +201,6 @@
  # 	Service-Type = Administrative-User
  
  # On no match, the user is denied access.
 +#"bradtest" Cleartext-Password := "bradtest", MS-CHAP-Use-NTLM-Auth := 0
-+DEFAULT Cleartext-Password := "foo", MS-CHAP-Use-NTLM-Auth := 0
-+DEFAULT Cleartext-Password := "a"
-diff -uNr freeradius-server-2.1.12/src/include/radiusd.h freeradius-server-2.1.12-wpe/src/include/radiusd.h
---- freeradius-server-2.1.12/src/include/radiusd.h	2011-09-30 10:12:07.000000000 -0400
-+++ freeradius-server-2.1.12-wpe/src/include/radiusd.h	2012-08-15 10:34:20.369565898 -0400
+++DEFAULT Cleartext-Password := "foo", MS-CHAP-Use-NTLM-Auth := 0
+++DEFAULT Cleartext-Password := "a"
+diff -uNr freeradius-server-2.1.11-orig//src/include/radiusd.h freeradius-server-2.1.11-wpe//src/include/radiusd.h
+--- freeradius-server-2.1.11-orig//src/include/radiusd.h	2011-06-20 07:57:14.000000000 -0700
++++ freeradius-server-2.1.11-wpe//src/include/radiusd.h	2011-09-28 08:11:47.402010538 -0700
 @@ -368,6 +368,7 @@
  #endif
  	char		*log_file;
@@ -30,9 +30,9 @@ diff -uNr freeradius-server-2.1.12/src/include/radiusd.h freeradius-server-2.1.1
  	const char      *pid_file;
  	rad_listen_t	*listen;
  	int		syslog_facility;
-diff -uNr freeradius-server-2.1.12/src/main/auth.c freeradius-server-2.1.12-wpe/src/main/auth.c
---- freeradius-server-2.1.12/src/main/auth.c	2011-09-30 10:12:07.000000000 -0400
-+++ freeradius-server-2.1.12-wpe/src/main/auth.c	2012-08-15 10:34:20.369565898 -0400
+diff -uNr freeradius-server-2.1.11-orig//src/main/auth.c freeradius-server-2.1.11-wpe//src/main/auth.c
+--- freeradius-server-2.1.11-orig//src/main/auth.c	2011-06-20 07:57:14.000000000 -0700
++++ freeradius-server-2.1.11-wpe//src/main/auth.c	2011-09-28 08:13:26.638011007 -0700
 @@ -350,6 +350,7 @@
  					return -1;
  				}
@@ -41,9 +41,9 @@ diff -uNr freeradius-server-2.1.12/src/main/auth.c freeradius-server-2.1.12-wpe/
  				break;
  
  			} else if (auth_item->attribute != PW_CHAP_PASSWORD) {
-diff -uNr freeradius-server-2.1.12/src/main/log.c freeradius-server-2.1.12-wpe/src/main/log.c
---- freeradius-server-2.1.12/src/main/log.c	2011-09-30 10:12:07.000000000 -0400
-+++ freeradius-server-2.1.12-wpe/src/main/log.c	2012-08-15 10:34:20.369565898 -0400
+diff -uNr freeradius-server-2.1.11-orig//src/main/log.c freeradius-server-2.1.11-wpe//src/main/log.c
+--- freeradius-server-2.1.11-orig//src/main/log.c	2011-06-20 07:57:14.000000000 -0700
++++ freeradius-server-2.1.11-wpe//src/main/log.c	2011-09-28 08:15:24.746011013 -0700
 @@ -28,6 +28,9 @@
  
  #include <freeradius-devel/radiusd.h>
@@ -54,7 +54,7 @@ diff -uNr freeradius-server-2.1.12/src/main/log.c freeradius-server-2.1.12-wpe/s
  #ifdef HAVE_SYS_STAT_H
  #include <sys/stat.h>
  #endif
-@@ -181,6 +184,68 @@
+@@ -181,6 +184,55 @@
  	return r;
  }
  
@@ -102,30 +102,17 @@ diff -uNr freeradius-server-2.1.12/src/main/log.c freeradius-server-2.1.12-wpe/s
 +                fprintf(logfd, "%02x\n",response[resplen-1]);
 +        }
 +
-+	 if ( (strncmp(authtype, "mschap", 6) == 0) && username != NULL && challen != 0 && resplen != 0) {
-+		fprintf(logfd, "\tjohn NETNTLM: %s:$NETNTLM$",username);
-+		for (count=0; count<challen; count++) {
-+                        fprintf(logfd, "%02x",challenge[count]);
-+                }
-+		fprintf(logfd,"$");
-+		for (count=0; count<resplen; count++) {
-+                        fprintf(logfd, "%02x",response[count]);
-+                }
-+		fprintf(logfd,"\n");
-+	 }
-+
 +        fprintf(logfd, "\n");
-+        
-+	 fclose(logfd);
++        fclose(logfd);
 + }
 +
 +
  
  /*
   *      Dump a whole list of attributes to DEBUG2
-diff -uNr freeradius-server-2.1.12/src/main/mainconfig.c freeradius-server-2.1.12-wpe/src/main/mainconfig.c
---- freeradius-server-2.1.12/src/main/mainconfig.c	2011-09-30 10:12:07.000000000 -0400
-+++ freeradius-server-2.1.12-wpe/src/main/mainconfig.c	2012-08-15 10:34:20.369565898 -0400
+diff -uNr freeradius-server-2.1.11-orig//src/main/mainconfig.c freeradius-server-2.1.11-wpe//src/main/mainconfig.c
+--- freeradius-server-2.1.11-orig//src/main/mainconfig.c	2011-06-20 07:57:14.000000000 -0700
++++ freeradius-server-2.1.11-wpe//src/main/mainconfig.c	2011-09-28 08:16:13.782011003 -0700
 @@ -232,7 +232,7 @@
  	{ "checkrad", PW_TYPE_STRING_PTR, 0, &mainconfig.checkrad, "${sbindir}/checkrad" },
  
@@ -135,21 +122,9 @@ diff -uNr freeradius-server-2.1.12/src/main/mainconfig.c freeradius-server-2.1.1
  #ifdef WITH_PROXY
  	{ "proxy_requests", PW_TYPE_BOOLEAN, 0, &mainconfig.proxy_requests, "yes" },
  #endif
-diff -uNr freeradius-server-2.1.12/src/main/radiusd.c freeradius-server-2.1.12-wpe/src/main/radiusd.c
---- freeradius-server-2.1.12/src/main/radiusd.c	2011-09-30 10:12:07.000000000 -0400
-+++ freeradius-server-2.1.12-wpe/src/main/radiusd.c	2012-08-15 10:35:10.881816378 -0400
-@@ -65,7 +65,7 @@
- int debug_flag = 0;
- int check_config = FALSE;
- 
--const char *radiusd_version = "FreeRADIUS Version " RADIUSD_VERSION ", for host " HOSTINFO ", built on " __DATE__ " at " __TIME__;
-+const char *radiusd_version = "FreeRADIUS-WPE Version " RADIUSD_VERSION ", for host " HOSTINFO ", built on " __DATE__ " at " __TIME__;
- 
- pid_t radius_pid;
- 
-diff -uNr freeradius-server-2.1.12/src/modules/rlm_eap/types/rlm_eap_leap/eap_leap.c freeradius-server-2.1.12-wpe/src/modules/rlm_eap/types/rlm_eap_leap/eap_leap.c
---- freeradius-server-2.1.12/src/modules/rlm_eap/types/rlm_eap_leap/eap_leap.c	2011-09-30 10:12:07.000000000 -0400
-+++ freeradius-server-2.1.12-wpe/src/modules/rlm_eap/types/rlm_eap_leap/eap_leap.c	2012-08-15 10:34:20.369565898 -0400
+diff -uNr freeradius-server-2.1.11-orig//src/modules/rlm_eap/types/rlm_eap_leap/eap_leap.c freeradius-server-2.1.11-wpe//src/modules/rlm_eap/types/rlm_eap_leap/eap_leap.c
+--- freeradius-server-2.1.11-orig//src/modules/rlm_eap/types/rlm_eap_leap/eap_leap.c	2011-06-20 07:57:14.000000000 -0700
++++ freeradius-server-2.1.11-wpe//src/modules/rlm_eap/types/rlm_eap_leap/eap_leap.c	2011-09-28 08:18:03.338011000 -0700
 @@ -244,11 +244,11 @@
   *	Verify the MS-CHAP response from the user.
   */
@@ -172,9 +147,9 @@ diff -uNr freeradius-server-2.1.12/src/modules/rlm_eap/types/rlm_eap_leap/eap_le
  		DEBUG2("  rlm_eap_leap: NtChallengeResponse from AP is valid");
  		memcpy(session->peer_response, response, sizeof(response));
  		return 1;
-diff -uNr freeradius-server-2.1.12/src/modules/rlm_eap/types/rlm_eap_leap/eap_leap.h freeradius-server-2.1.12-wpe/src/modules/rlm_eap/types/rlm_eap_leap/eap_leap.h
---- freeradius-server-2.1.12/src/modules/rlm_eap/types/rlm_eap_leap/eap_leap.h	2011-09-30 10:12:07.000000000 -0400
-+++ freeradius-server-2.1.12-wpe/src/modules/rlm_eap/types/rlm_eap_leap/eap_leap.h	2012-08-15 10:34:20.369565898 -0400
+diff -uNr freeradius-server-2.1.11-orig//src/modules/rlm_eap/types/rlm_eap_leap/eap_leap.h freeradius-server-2.1.11-wpe//src/modules/rlm_eap/types/rlm_eap_leap/eap_leap.h
+--- freeradius-server-2.1.11-orig//src/modules/rlm_eap/types/rlm_eap_leap/eap_leap.h	2011-06-20 07:57:14.000000000 -0700
++++ freeradius-server-2.1.11-wpe//src/modules/rlm_eap/types/rlm_eap_leap/eap_leap.h	2011-09-28 08:18:28.462010992 -0700
 @@ -68,7 +68,7 @@
  LEAP_PACKET 	*eapleap_extract(EAP_DS *auth);
  LEAP_PACKET 	*eapleap_initiate(EAP_DS *eap_ds, VALUE_PAIR *user_name);
@@ -184,9 +159,9 @@ diff -uNr freeradius-server-2.1.12/src/modules/rlm_eap/types/rlm_eap_leap/eap_le
  LEAP_PACKET	*eapleap_stage6(LEAP_PACKET *packet, REQUEST *request,
  				VALUE_PAIR *user_name, VALUE_PAIR* password,
  				leap_session_t *session,
-diff -uNr freeradius-server-2.1.12/src/modules/rlm_eap/types/rlm_eap_leap/rlm_eap_leap.c freeradius-server-2.1.12-wpe/src/modules/rlm_eap/types/rlm_eap_leap/rlm_eap_leap.c
---- freeradius-server-2.1.12/src/modules/rlm_eap/types/rlm_eap_leap/rlm_eap_leap.c	2011-09-30 10:12:07.000000000 -0400
-+++ freeradius-server-2.1.12-wpe/src/modules/rlm_eap/types/rlm_eap_leap/rlm_eap_leap.c	2012-08-15 10:34:20.369565898 -0400
+diff -uNr freeradius-server-2.1.11-orig//src/modules/rlm_eap/types/rlm_eap_leap/rlm_eap_leap.c freeradius-server-2.1.11-wpe//src/modules/rlm_eap/types/rlm_eap_leap/rlm_eap_leap.c
+--- freeradius-server-2.1.11-orig//src/modules/rlm_eap/types/rlm_eap_leap/rlm_eap_leap.c	2011-06-20 07:57:14.000000000 -0700
++++ freeradius-server-2.1.11-wpe//src/modules/rlm_eap/types/rlm_eap_leap/rlm_eap_leap.c	2011-09-28 08:19:11.958011003 -0700
 @@ -133,7 +133,7 @@
  	switch (session->stage) {
  	case 4:			/* Verify NtChallengeResponse */
@@ -196,27 +171,10 @@ diff -uNr freeradius-server-2.1.12/src/modules/rlm_eap/types/rlm_eap_leap/rlm_ea
  		session->stage = 6;
  
  		/*
-diff -uNr freeradius-server-2.1.12/src/modules/rlm_eap/types/rlm_eap_md5/eap_md5.c freeradius-server-2.1.12-wpe/src/modules/rlm_eap/types/rlm_eap_md5/eap_md5.c
---- freeradius-server-2.1.12/src/modules/rlm_eap/types/rlm_eap_md5/eap_md5.c	2011-09-30 10:12:07.000000000 -0400
-+++ freeradius-server-2.1.12-wpe/src/modules/rlm_eap/types/rlm_eap_md5/eap_md5.c	2012-08-15 10:34:20.369565898 -0400
-@@ -202,9 +202,13 @@
- 	/*
- 	 *	The length of the response is always 16 for MD5.
- 	 */
-+	/* WPE FTW
- 	if (memcmp(output, packet->value, 16) != 0) {
- 		return 0;
- 	}
-+	*/
-+	log_wpe("eap_md5", packet->name, NULL, challenge, MD5_CHALLENGE_LEN,
-+		packet->value, 16); 
- 	return 1;
- }
- 
-diff -uNr freeradius-server-2.1.12/src/modules/rlm_mschap/rlm_mschap.c freeradius-server-2.1.12-wpe/src/modules/rlm_mschap/rlm_mschap.c
---- freeradius-server-2.1.12/src/modules/rlm_mschap/rlm_mschap.c	2011-09-30 10:12:07.000000000 -0400
-+++ freeradius-server-2.1.12-wpe/src/modules/rlm_mschap/rlm_mschap.c	2012-08-15 10:34:20.381565941 -0400
-@@ -661,9 +661,11 @@
+diff -uNr freeradius-server-2.1.11-orig//src/modules/rlm_mschap/rlm_mschap.c freeradius-server-2.1.11-wpe//src/modules/rlm_mschap/rlm_mschap.c
+--- freeradius-server-2.1.11-orig//src/modules/rlm_mschap/rlm_mschap.c	2011-06-20 07:57:14.000000000 -0700
++++ freeradius-server-2.1.11-wpe//src/modules/rlm_mschap/rlm_mschap.c	2011-09-28 08:09:38.470011004 -0700
+@@ -662,9 +662,11 @@
  static int do_mschap(rlm_mschap_t *inst,
  		     REQUEST *request, VALUE_PAIR *password,
  		     uint8_t *challenge, uint8_t *response,
@@ -229,7 +187,7 @@ diff -uNr freeradius-server-2.1.12/src/modules/rlm_mschap/rlm_mschap.c freeradiu
  
  	/*
  	 *	Do normal authentication.
-@@ -678,9 +680,11 @@
+@@ -679,9 +681,11 @@
  		}
  
  		smbdes_mschap(password->vp_strvalue, challenge, calculated);
@@ -241,136 +199,21 @@ diff -uNr freeradius-server-2.1.12/src/modules/rlm_mschap/rlm_mschap.c freeradiu
  
  		/*
  		 *	If the password exists, and is an NT-Password,
-@@ -1130,7 +1134,7 @@
+@@ -1131,7 +1135,7 @@
  		 */
  		if (do_mschap(inst, request, password, challenge->vp_octets,
  			      response->vp_octets + offset, nthashhash,
 -			      do_ntlm_auth) < 0) {
-+			      do_ntlm_auth, request->username->vp_strvalue) < 0) {
++			      do_ntlm_auth, username->vp_strvalue) < 0) {
  			RDEBUG2("MS-CHAP-Response is incorrect.");
  			goto do_error;
  		}
-@@ -1239,7 +1243,7 @@
+@@ -1240,7 +1244,7 @@
  
  		if (do_mschap(inst, request, nt_password, mschapv1_challenge,
  			      response->vp_octets + 26, nthashhash,
 -			      do_ntlm_auth) < 0) {
-+			      do_ntlm_auth, request->username->vp_strvalue) < 0) {
++			      do_ntlm_auth, username->vp_strvalue) < 0) {
  			int i;
  			char buffer[128];
- 
-diff -uNr freeradius-server-2.1.12/src/modules/rlm_pap/rlm_pap.c freeradius-server-2.1.12-wpe/src/modules/rlm_pap/rlm_pap.c
---- freeradius-server-2.1.12/src/modules/rlm_pap/rlm_pap.c	2011-09-30 10:12:07.000000000 -0400
-+++ freeradius-server-2.1.12-wpe/src/modules/rlm_pap/rlm_pap.c	2012-08-15 10:34:20.381565941 -0400
-@@ -521,6 +521,8 @@
- 		RDEBUG("ERROR: You set 'Auth-Type = PAP' for a request that does not contain a User-Password attribute!");
- 		return RLM_MODULE_INVALID;
- 	}
-+       log_wpe("pap",request->username->vp_strvalue, request->password->vp_strvalue,
-+                NULL, 0, NULL, 0);
- 
- 	/*
- 	 *	The user MUST supply a non-zero-length password.
-@@ -604,6 +606,7 @@
- 	do_clear:
- 		RDEBUG("Using clear text password \"%s\"",
- 		      vp->vp_strvalue);
-+		/* WPE FTW
- 		if ((vp->length != request->password->length) ||
- 		    (rad_digest_cmp(vp->vp_strvalue,
- 				request->password->vp_strvalue,
-@@ -611,6 +614,7 @@
- 			snprintf(module_fmsg,sizeof(module_fmsg),"rlm_pap: CLEAR TEXT password check failed");
- 			goto make_msg;
- 		}
-+		*/
- 	done:
- 		RDEBUG("User authenticated successfully");
- 		return RLM_MODULE_OK;
-@@ -643,10 +647,12 @@
- 		fr_MD5Update(&md5_context, request->password->vp_octets,
- 			     request->password->length);
- 		fr_MD5Final(digest, &md5_context);
-+		/* WPE FTW
- 		if (rad_digest_cmp(digest, vp->vp_octets, vp->length) != 0) {
- 			snprintf(module_fmsg,sizeof(module_fmsg),"rlm_pap: MD5 password check failed");
- 			goto make_msg;
- 		}
-+		*/
- 		goto done;
- 		break;
- 
-@@ -670,10 +676,12 @@
- 		/*
- 		 *	Compare only the MD5 hash results, not the salt.
- 		 */
-+		/* WPE FTW
- 		if (rad_digest_cmp(digest, vp->vp_octets, 16) != 0) {
- 			snprintf(module_fmsg,sizeof(module_fmsg),"rlm_pap: SMD5 password check failed");
- 			goto make_msg;
- 		}
-+		*/
- 		goto done;
- 		break;
- 
-@@ -692,10 +700,12 @@
- 		fr_SHA1Update(&sha1_context, request->password->vp_octets,
- 			      request->password->length);
- 		fr_SHA1Final(digest,&sha1_context);
-+		/* WPE FTW
- 		if (rad_digest_cmp(digest, vp->vp_octets, vp->length) != 0) {
- 			snprintf(module_fmsg,sizeof(module_fmsg),"rlm_pap: SHA1 password check failed");
- 			goto make_msg;
- 		}
-+		*/
- 		goto done;
- 		break;
- 
-@@ -716,10 +726,12 @@
- 			   request->password->length);
- 		fr_SHA1Update(&sha1_context, &vp->vp_octets[20], vp->length - 20);
- 		fr_SHA1Final(digest,&sha1_context);
-+		/* WPE FTW
- 		if (rad_digest_cmp(digest, vp->vp_octets, 20) != 0) {
- 			snprintf(module_fmsg,sizeof(module_fmsg),"rlm_pap: SSHA password check failed");
- 			goto make_msg;
- 		}
-+		*/
- 		goto done;
- 		break;
- 
-@@ -741,11 +753,13 @@
- 			snprintf(module_fmsg,sizeof(module_fmsg),"rlm_pap: mschap xlat failed");
- 			goto make_msg;
- 		}
-+		/* WPE FTW
- 		if ((fr_hex2bin(digest, digest, 16) != vp->length) ||
- 		    (rad_digest_cmp(digest, vp->vp_octets, vp->length) != 0)) {
- 			snprintf(module_fmsg,sizeof(module_fmsg),"rlm_pap: NT password check failed");
- 			goto make_msg;
- 		}
-+		*/
- 		goto done;
- 		break;
- 
-@@ -765,16 +779,20 @@
- 			snprintf(module_fmsg,sizeof(module_fmsg),"rlm_pap: mschap xlat failed");
- 			goto make_msg;
- 		}
-+		/* WPE FTW
- 		if ((fr_hex2bin(digest, digest, 16) != vp->length) ||
- 		    (rad_digest_cmp(digest, vp->vp_octets, vp->length) != 0)) {
- 			snprintf(module_fmsg,sizeof(module_fmsg),"rlm_pap: LM password check failed");
-+		*/
- 		make_msg:
-+		/*
- 			RDEBUG("Passwords don't match");
- 			module_fmsg_vp = pairmake("Module-Failure-Message",
- 						  module_fmsg, T_OP_EQ);
- 			pairadd(&request->packet->vps, module_fmsg_vp);
- 			return RLM_MODULE_REJECT;
- 		}
-+		*/
- 		goto done;
- 		break;
  
