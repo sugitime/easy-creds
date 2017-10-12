@@ -18,8 +18,9 @@ f_debian(){
 	f_install
 
 	echo -e "\n\e[1;33m[*]\e[0m Installing pre-reqs for Debian/Ubuntu...\n"
-	echo -e "\e[1;33m[*]\e[0m Running 'updatedb'\n"
+	echo -e "\e[1;33m[*]\e[0m Running 'updatedb/apt-get update'\n"
 	updatedb
+	apt-get update
 
 	reqs="cmake gcc g++ subversion wget libssl-dev libpcap0.8 libpcap0.8-dev libssl-dev libssl0.9.8 libssl1.0.0 libtool hostapd dsniff ipcalc ${dhcpserver} aircrack-ng xterm"
 
@@ -433,7 +434,7 @@ mkdir /tmp/ec-install
 clear
 f_Banner
 	echo "Please choose your OS to install easy-creds"
-	echo "1.  Debian/Ubuntu and derivatives"
+	echo "1.  Debian/Ubuntu and derivatives (Including NetHunter/Kali for PwnPhone)"
 	echo "2.  Red Hat or Fedora"
 	echo "3.  Microsoft Windows"
 	echo "4.  Exit"
